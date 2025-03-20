@@ -4,6 +4,8 @@ import cors from "cors";
 import Routes from "./routes/index.js";
 const app: Application = express();
 const PORT = process.env.PORT || 8000;
+import { consultationBot } from "./consultations-bot/index.js";
+import {answererBot} from "./answerer-bot/index.js";
 
 // * Middleware
 app.use(cors());
@@ -16,5 +18,15 @@ app.get("/", (req: Request, res: Response) => {
 
 // * Routes
 app.use("/api", Routes);
+
+consultationBot.launch();
+console.log("🤖 consultationBot bot started");
+process.once('SIGINT', () => consultationBot.stop('SIGINT'));
+process.once('SIGTERM', () => consultationBot.stop('SIGTERM'));
+
+answererBot.launch();
+console.log("🤖 consultationBot bot started");
+process.once('SIGINT', () => answererBot.stop('SIGINT'));
+process.once('SIGTERM', () => answererBot.stop('SIGTERM'));
 
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
