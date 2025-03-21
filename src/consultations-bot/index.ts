@@ -1,8 +1,7 @@
 import { Telegraf } from "telegraf";
 import { config } from "../config/config.js";
 import consultationsService from "../services/consultations.js";
-
-
+import senderService from "../services/sender.js";
 const consultationBot = new Telegraf(config.CONS_BOT_TOKEN);
 
 const webPayment = config.URL_PAY_CONSULTATION
@@ -66,6 +65,7 @@ consultationBot.start(async (ctx) => {
             last_name: ctx.message.from.last_name || "default",
             username: ctx.message.from.username || "default",
         });
+
     } catch (e) {
         console.error("Error in /start command:", e);
     }
@@ -102,9 +102,18 @@ consultationBot.on('text', async (ctx) => {
             message: ctx.message.text,
             first_name: ctx.message.from.first_name || "default",
             last_name: ctx.message.from.last_name || "default",
-            cause: "consultation"
+            cause: "consultation_request"
         });
 
+        await senderService.sendMessage({
+                chat_id: ctx.message.from.id,
+                letter: ctx.message.text,
+                first_name: ctx.message.from.first_name || "nothing",
+                last_name: ctx.message.from.last_name || "nothing",
+                username: ctx.message.from.username || "nothing",
+                cause: "consultation_request"
+            }
+        )
         // Отправляем подтверждение пользователю
         await ctx.reply("Ваше сообщение сохранено!");
     } catch (error) {

@@ -3,7 +3,15 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>939</IntrospectionStateNumber>
+      <Grants>1||-9223372036854775808|c|G
+1||10|c|G
+1||10|C|G
+1||10|T|G
+4||-9223372036854775808|c|G
+4||10|c|G
+4||10|C|G
+4||10|T|G</Grants>
+      <IntrospectionStateNumber>959</IntrospectionStateNumber>
       <ServerVersion>17.4</ServerVersion>
       <StartupTime>1742472786</StartupTime>
       <TimeZones>true ACDT
@@ -1399,7 +1407,7 @@ true posixrules
 13219||10|C|G
 13219||-9223372036854775808|U|G
 13219||10|U|G</Grants>
-      <IntrospectionStateNumber>939</IntrospectionStateNumber>
+      <IntrospectionStateNumber>959</IntrospectionStateNumber>
       <ObjectId>16384</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4826,8 +4834,8 @@ true posixrules
     <schema id="265" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>939</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2025-03-20.18:47:08</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>959</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2025-03-21.11:45:13</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>

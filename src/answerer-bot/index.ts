@@ -1,9 +1,24 @@
-import { Telegraf } from "telegraf";
-import { config } from "../config/config.js";
+import {Telegraf, session, Scenes} from "telegraf";
+import {config} from "../config/config.js";
 import consultationsService from "../services/consultations.js";
+import SceneReply from "../scenes/scene-reply.js";
 
+;// Путь к вашему файлу
+const bot = new Telegraf("YOUR_BOT_TOKEN");
+
+// Создаем экземпляр сцены
+const sceneReply = new SceneReply();
+const replyScene = sceneReply.ReplyScene();
+
+// Создаем Stage и регистрируем сцену
+// @ts-ignore
+const stage = new Scenes.Stage([replyScene]);
+bot.use(session());
+bot.use(stage.middleware());
 
 const answererBot = new Telegraf(config.ANSWER_BOT_TOKEN);
+answererBot.use(session());
+answererBot.use(stage.middleware());
 
 answererBot.start(async (ctx) => {
     try {
@@ -19,8 +34,6 @@ answererBot.start(async (ctx) => {
         await ctx.replyWithHTML(
             `<b>Добрый день ${ctx.message.from.first_name ? ctx.message.from.first_name : 'незнакомец'}!</b>\nПриветствую Вас в ответчике.`,
         );
-
-
 
         // Логируем данные пользователя
         console.log(ctx.message.from);
@@ -38,25 +51,35 @@ answererBot.start(async (ctx) => {
 });
 
 
-// consultationBot.on('text', async (ctx) => {
-//     try {
-//         // Сохраняем сообщение в таблице Chats
-//         await consultationsService.saveMessage({
-//             chat_id: ctx.message.from.id,
-//             message: ctx.message.text,
-//             first_name: ctx.message.from.first_name || "default",
-//             last_name: ctx.message.from.last_name || "default",
-//             cause: "consultation"
-//         });
-//
-//         // Отправляем подтверждение пользователю
-//         await ctx.reply("Ваше сообщение сохранено!");
-//     } catch (error) {
-//         console.error("Error saving message:", error);
-//         await ctx.reply("Произошла ошибка при сохранении сообщения.");
-//     }
-// });
+answererBot.on('text', async (ctx) => {
+    try {
+        // Удаляем сообщение пользователя
+        await ctx.deleteMessage();
+    } catch (error) {
+        console.error("Error saving or deleting message:", error);
+        await ctx.reply("Произошла ошибка при обработке вашего сообщения.");
+    }
+});
+
+answererBot.on('callback_query', async (ctx) => {
+    try {
+        // @ts-ignore
+        const callbackData = ctx.callbackQuery.data;
+        // Логируем получение callback_query
+        // @ts-ignore
+        // Проверяем, что callback_data начинается с 'reply_'
+        if (callbackData.startsWith('reply_')) {
+            // Разделяем строку на части, чтобы извлечь userTelegramId и issueId
+            const [reply, chat_id, cause] = callbackData.split('_');
+            const username = ctx.callbackQuery.from.username
+            // @ts-ignore
+            await ctx.scene.enter('reply', {chat_id: chat_id, cause: 'consultation_comment', username: username});
+        }
+    } catch (error) {
+        // Логируем ошибку при обработке callback_query
+    }
+});
 
 
-export { answererBot };
+export {answererBot};
 

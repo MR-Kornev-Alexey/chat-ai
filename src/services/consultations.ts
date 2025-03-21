@@ -105,7 +105,44 @@ class ConsultationsService {
                 data: {
                     cause: data.cause,
                     message: data.message,
-                    clients_name: `${data.first_name || ""} ${data.last_name || ""}`.trim(), // Сохраняем имя клиента
+                    clients_name: `${telegramUser.chat_id || ""} ${data.first_name || ""} ${data.last_name || ""}`.trim(), // Сохраняем имя клиента
+                    user_id: telegramUser.user.id, // Используем user_id из связанного пользователя
+                },
+            });
+        } catch (error) {
+            console.error("Error in saveMessage:", error);
+            throw error;
+        }
+    }
+    async saveComment( chat_id:number, cause: string, username: string, comment:string, answersID:number) {
+        try {
+            console.log("chat_id",chat_id)
+            console.log("answersID",answersID)
+            // Ищем запись в таблице Telegrams и включаем связанного пользователя
+            const telegramUser = await prisma.telegrams.findUnique({
+                where: { chat_id: chat_id },
+                include: {
+                    user: true, // Включаем связанного пользователя
+                },
+            });
+
+            // Если запись не найдена, выбрасываем ошибку
+            if (!telegramUser) {
+                throw new Error("Telegram user not found");
+            }
+
+            // Если связанный пользователь не найден, выбрасываем ошибку
+            if (!telegramUser.user) {
+                throw new Error("Associated user not found");
+            }
+
+            // Создаем запись в таблице Chats
+            return await prisma.chats.create({
+                data: {
+                    cause: cause,
+                    message: comment,
+                    clients_name: `${telegramUser.chat_id || ""} ${telegramUser.first_name || ""} ${telegramUser.last_name || ""}`.trim(), // Сохраняем имя клиента
+                    managers_name: answersID.toString(),
                     user_id: telegramUser.user.id, // Используем user_id из связанного пользователя
                 },
             });
