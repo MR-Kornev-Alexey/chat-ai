@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29d5d83f-565f-4322-bc31-48dd2ba49f6b" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/common.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/answerer-bot/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/answerer-bot/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conduction-bot/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/conduction-bot/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/consultations-bot/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/consultations-bot/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/feedback.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/scene-get-token.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/scene-reply.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/scene-reply.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/consultations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/common-db.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/sender.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/sender.ts" afterDir="false" />
-    </list>
+    <list default="true" id="29d5d83f-565f-4322-bc31-48dd2ba49f6b" name="Changes" comment="deploy" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,7 +103,7 @@
       <workItem from="1742631871716" duration="196000" />
       <workItem from="1742632083376" duration="7708000" />
       <workItem from="1742640717574" duration="3998000" />
-      <workItem from="1742644724690" duration="1996000" />
+      <workItem from="1742644724690" duration="2324000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -129,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742624983134</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="deploy">
+      <option name="closed" value="true" />
+      <created>1742647048042</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1742647048042</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +129,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="deploy" />
+    <option name="LAST_COMMIT_MESSAGE" value="deploy" />
   </component>
 </project>
