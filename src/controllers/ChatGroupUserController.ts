@@ -10,10 +10,8 @@ class ChatGroupUserController {
   static async index(req: Request, res: Response) {
     try {
       const { group_id } = req.query;
-      const users = await prisma.groupUsers.findMany({
-        where: {
-          group_id: group_id as string,
-        },
+      const users = await prisma.user.findMany({
+
       });
 
       return res.json({ message: "Date fetched successfully!", data: users });
@@ -27,7 +25,7 @@ class ChatGroupUserController {
   static async store(req: Request, res: Response) {
     try {
       const body: GroupUserType = req.body;
-      const user = await prisma.groupUsers.create({
+      const user = await prisma.user.create({
         data: body,
       });
       return res.json({ message: "User created successfully!", data: user });

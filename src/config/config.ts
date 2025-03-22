@@ -3,6 +3,7 @@ dotenv.config();
 
 export const config = {
     CONS_BOT_TOKEN: process.env.CONS_BOT_TOKEN || "",
+    CONDUCT_BOT_TOKEN: process.env.CONDUCT_BOT_TOKEN || "",
     ANSWER_BOT_TOKEN: process.env.ANSWER_BOT_TOKEN || "",
     DB_HOST: process.env.DB_HOST || "localhost",
     DB_PORT: Number(process.env.DB_PORT) || 3306,

@@ -65,15 +65,16 @@ answererBot.on('callback_query', async (ctx) => {
     try {
         // @ts-ignore
         const callbackData = ctx.callbackQuery.data;
-        // Логируем получение callback_query
         // @ts-ignore
         // Проверяем, что callback_data начинается с 'reply_'
         if (callbackData.startsWith('reply_')) {
             // Разделяем строку на части, чтобы извлечь userTelegramId и issueId
             const [reply, chat_id, cause] = callbackData.split('_');
             const username = ctx.callbackQuery.from.username
+            console.log(cause)
+            const newCause = `${cause}_answer`
             // @ts-ignore
-            await ctx.scene.enter('reply', {chat_id: chat_id, cause: 'consultation_comment', username: username});
+            await ctx.scene.enter('reply', {chat_id: chat_id, cause: newCause , username: username});
         }
     } catch (error) {
         // Логируем ошибку при обработке callback_query

@@ -1,5 +1,5 @@
 import prisma from "../config/db.config.js";
-
+import answererService from "./answerer.js"
 interface StartPayloadType {
     chat_id: number;
     first_name: string;
@@ -116,8 +116,6 @@ class ConsultationsService {
     }
     async saveComment( chat_id:number, cause: string, username: string, comment:string, answersID:number) {
         try {
-            console.log("chat_id",chat_id)
-            console.log("answersID",answersID)
             // Ищем запись в таблице Telegrams и включаем связанного пользователя
             const telegramUser = await prisma.telegrams.findUnique({
                 where: { chat_id: chat_id },
@@ -137,7 +135,7 @@ class ConsultationsService {
             }
 
             // Создаем запись в таблице Chats
-            return await prisma.chats.create({
+            await prisma.chats.create({
                 data: {
                     cause: cause,
                     message: comment,
@@ -146,6 +144,7 @@ class ConsultationsService {
                     user_id: telegramUser.user.id, // Используем user_id из связанного пользователя
                 },
             });
+            await answererService.sendAnswerToClient(cause, comment, chat_id)
         } catch (error) {
             console.error("Error in saveMessage:", error);
             throw error;

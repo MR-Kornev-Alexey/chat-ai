@@ -14,7 +14,6 @@ class SenderService {
         try {
             // Ищем запись в таблице tracking
             const listOfUser = await prisma.tracking.findMany();
-            console.log(listOfUser)
             for (const user of listOfUser) {
                 try {
                     // Проверяем, если user.reply равен true, добавляем кнопку "Комментировать"

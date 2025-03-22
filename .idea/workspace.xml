@@ -5,17 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29d5d83f-565f-4322-bc31-48dd2ba49f6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/scenes/feedback.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scenes/scene-get-token.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/scenes/scene-reply.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/sender.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f7b24fcc-20d4-4162-85a8-822d3473816e.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f7b24fcc-20d4-4162-85a8-822d3473816e/storage_v2/_src_/database/chat-db.E0MNLA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f7b24fcc-20d4-4162-85a8-822d3473816e/storage_v2/_src_/database/chat-db.E0MNLA/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conduction-bot/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/answerer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/answerer-bot/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/answerer-bot/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/consultations-bot/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/consultations-bot/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/ChatGroupUserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ChatGroupUserController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/ChatsController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ChatsController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/consultations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/consultations.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/sender.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/sender.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +24,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,25 +55,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/alexeymrk/elena/chatbot-ai/src",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/home/alexeymrk/elena/chatbot-ai/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/alexeymrk/elena/chatbot-ai/src&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/alexeymrk/elena/chatbot-ai/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
@@ -97,6 +104,7 @@
       <workItem from="1742499149551" duration="1208000" />
       <workItem from="1742557336109" duration="206000" />
       <workItem from="1742557554305" duration="6764000" />
+      <workItem from="1742577981870" duration="5772000" />
     </task>
     <servers />
   </component>
