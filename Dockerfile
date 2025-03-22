@@ -13,7 +13,6 @@ RUN npm ci
 # Копируем весь исходный код в контейнер
 COPY . .
 
-
 # Обновляем Prisma и генерируем клиента
 RUN npx prisma generate
 
