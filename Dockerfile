@@ -13,8 +13,6 @@ RUN npm ci
 # Копируем весь исходный код в контейнер
 COPY . .
 
-# Компилируем TypeScript в JavaScript
-RUN npm run build
 
 # Обновляем Prisma и генерируем клиента
 RUN npx prisma generate
