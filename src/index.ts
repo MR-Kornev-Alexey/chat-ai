@@ -3,7 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 import Routes from "./routes/index.js";
 const app: Application = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8001;
 import { consultationBot } from "./consultations-bot/index.js";
 import {answererBot} from "./answerer-bot/index.js";
 import {conductionBot} from "./conduction-bot/index.js";

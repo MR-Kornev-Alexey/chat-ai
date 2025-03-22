@@ -1,16 +1,17 @@
 import prisma from "../config/db.config.js";
 import {answererBot} from "../answerer-bot/index.js";
+import {MessagesData} from "../types/common.js";
 
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function createMessage(data: { last_name: string; cause: string; letter: any; first_name: string; chat_id: number, username: string  }) {
-  return  `Бот ${data.cause}\nСообщение от ${data.chat_id}\n ${data.first_name} ${data.last_name}\nНикНейм: ${data.username}\n----------------------------------\n✍️${data.letter}`
+function createMessage(data: MessagesData) {
+  return  `Этап ${data.cause}\nСообщение от ${data.chat_id}\n ${data.first_name} ${data.last_name}\nНикНейм: ${data.username}\n----------------------------------\n✍️${data.message}`
 }
 
 class SenderService {
-    async sendMessage(data: { last_name: string; cause: string; letter: any; first_name: string; chat_id: number, username: string }) {
+    async sendMessage(data: MessagesData) {
         try {
             // Ищем запись в таблице tracking
             const listOfUser = await prisma.tracking.findMany();

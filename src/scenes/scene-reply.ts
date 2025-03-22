@@ -1,5 +1,5 @@
 import { Scenes } from "telegraf";
-import consultationsService from "../services/consultations.js";
+import consultationsService from "../services/common-db.js";
 class SceneReply {
     ReplyScene() {
         const reply = new Scenes.BaseScene('reply');

@@ -1,6 +1,6 @@
 import {Telegraf, session, Scenes} from "telegraf";
 import {config} from "../config/config.js";
-import consultationsService from "../services/consultations.js";
+import consultationsService from "../services/common-db.js";
 import SceneReply from "../scenes/scene-reply.js";
 
 ;// Путь к вашему файлу

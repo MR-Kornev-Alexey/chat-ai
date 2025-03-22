@@ -9,19 +9,41 @@ interface StartPayloadType {
 }
 
 class ConsultationsService {
+    async findUserByChatId (chat_id: number) {
+        return prisma.telegrams.findUnique({
+            where: {
+                chat_id: chat_id,
+            },
+            include: {
+                user: true, // Включаем связанного пользователя
+            },
+        });
+    }
+    async checkPrivacyByClient(chat_id: number): Promise<boolean> {
+        const findUser = await this.findUserByChatId(chat_id);
+
+        // Если пользователь не найден — сразу возвращаем false
+        if (!findUser || !findUser.user) {
+            return false;
+        }
+
+        // Проверяем наличие записи
+        const check = await prisma.chats.findFirst({
+            where: {
+                user_id: findUser.user.id,
+                cause: 'privacy_request',
+            },
+        });
+
+        // Превращаем результат в true/false
+        return !!check;
+    }
+
     async start(data: StartPayloadType) {
         let findUser;
         try {
             // Ищем запись в таблице Telegrams
-            findUser = await prisma.telegrams.findUnique({
-                where: {
-                    chat_id: data.chat_id,
-                },
-                include: {
-                    user: true, // Включаем связанного пользователя
-                },
-            });
-
+            findUser = await this.findUserByChatId(data.chat_id)
             // Если запись не найдена, создаем новую
             if (!findUser) {
                 // Создаем запись в таблице Telegrams
@@ -150,6 +172,7 @@ class ConsultationsService {
             throw error;
         }
     }
+
 }
 
 export default new ConsultationsService();

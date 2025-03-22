@@ -4,17 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29d5d83f-565f-4322-bc31-48dd2ba49f6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/conduction-bot/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/answerer.ts" afterDir="false" />
+    <list default="true" id="29d5d83f-565f-4322-bc31-48dd2ba49f6b" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/common.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/answerer-bot/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/answerer-bot/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conduction-bot/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/conduction-bot/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/consultations-bot/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/consultations-bot/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/ChatGroupUserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ChatGroupUserController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/ChatsController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ChatsController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/consultations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/consultations.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/feedback.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/scene-get-token.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/scene-reply.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/scene-reply.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/consultations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/common-db.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/sender.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/sender.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,6 +55,9 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2uJsAiRhjqnODO3eI8uIvD5tgST" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -77,6 +84,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/local" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -105,10 +115,28 @@
       <workItem from="1742557336109" duration="206000" />
       <workItem from="1742557554305" duration="6764000" />
       <workItem from="1742577981870" duration="5772000" />
+      <workItem from="1742624932832" duration="6686000" />
+      <workItem from="1742631871716" duration="196000" />
+      <workItem from="1742632083376" duration="7708000" />
+      <workItem from="1742640717574" duration="3998000" />
+      <workItem from="1742644724690" duration="1996000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <option name="closed" value="true" />
+      <created>1742624983134</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1742624983134</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>

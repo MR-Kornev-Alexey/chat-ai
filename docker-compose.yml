@@ -1,29 +1,17 @@
-
 services:
-  postgres:
-    image: postgres
-    container_name: chat-ai
-    restart: on-failure
+  # Бэкенд
+  app:
+    container_name: express_ts_app
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "5433:5432"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - "3000:3000" # Локальный порт:контейнерный порт
     environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    env_file:
-      - .env
-    user: postgres
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -d ${POSTGRES_DB} -U ${POSTGRES_USER}"]
-      interval: 10s
-      timeout: 10s
-      retries: 3
-      start_period: 10s
-volumes:
-  postgres-data:
+      - NODE_ENV=production
+      - PORT=3000
+      - BOT_TOKEN=${BOT_TOKEN} # Токен Telegram бота
+    volumes:
+      - .:/app
+      - /app/node_modules
 
-networks:
-  app-network:
-    driver: bridge
