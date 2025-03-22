@@ -1,0 +1,30 @@
+import prisma from "../config/db.config.js";
+class ChatGroupUserController {
+    static async index(req, res) {
+        try {
+            const { group_id } = req.query;
+            const users = await prisma.user.findMany({});
+            return res.json({ message: "Date fetched successfully!", data: users });
+        }
+        catch (error) {
+            return res
+                .status(500)
+                .json({ message: "Something went wrong.please try again!" });
+        }
+    }
+    static async store(req, res) {
+        try {
+            const body = req.body;
+            const user = await prisma.user.create({
+                data: body,
+            });
+            return res.json({ message: "User created successfully!", data: user });
+        }
+        catch (error) {
+            return res
+                .status(500)
+                .json({ message: "Something went wrong.please try again!" });
+        }
+    }
+}
+export default ChatGroupUserController;
