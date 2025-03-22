@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29d5d83f-565f-4322-bc31-48dd2ba49f6b" name="Changes" comment="deploy" />
+    <list default="true" id="29d5d83f-565f-4322-bc31-48dd2ba49f6b" name="Changes" comment="deploy">
+      <change afterPath="$PROJECT_DIR$/dist/answerer-bot/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/conduction-bot/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/config/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/config/db.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/config/kafka.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/config/redis.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/consultations-bot/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/controllers/AuthController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/controllers/ChatGroupUserController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/controllers/ChatsController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/middleware/AuthMiddleware.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/routes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/scenes/scene-reply.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/services/answerer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/services/common-db.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/services/consultations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/services/sender.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/types/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -103,7 +124,7 @@
       <workItem from="1742631871716" duration="196000" />
       <workItem from="1742632083376" duration="7708000" />
       <workItem from="1742640717574" duration="3998000" />
-      <workItem from="1742644724690" duration="3527000" />
+      <workItem from="1742644724690" duration="4001000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -145,7 +166,23 @@
       <option name="project" value="LOCAL" />
       <updated>1742648056009</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="deploy">
+      <option name="closed" value="true" />
+      <created>1742648436725</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1742648436725</updated>
+    </task>
+    <task id="LOCAL-00007" summary="deploy">
+      <option name="closed" value="true" />
+      <created>1742648726226</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1742648726226</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
