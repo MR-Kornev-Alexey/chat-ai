@@ -8,12 +8,11 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 
-# Копируем схему Prisma и остальные файлы проекта
-COPY prisma ./prisma
+# Копируем исходный код в контейнер
 COPY . .
 
-# Генерируем Prisma Client в контейнере
-RUN npx prisma generate
+# Компилируем проект из TypeScript в JavaScript
+RUN npm run build
 
-# Запуск приложения
+# Запускаем приложение
 CMD ["npm", "start"]
