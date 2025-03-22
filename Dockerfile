@@ -1,18 +1,23 @@
-# Используем образ с Node.js
+# Используем официальный образ Node.js
 FROM node:20-alpine
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Копируем package.json и устанавливаем зависимости
+# Копируем package.json и package-lock.json для установки зависимостей
 COPY package.json package-lock.json ./
-RUN npm install
 
-# Копируем исходный код в контейнер
+# Устанавливаем зависимости (npm ci для чистой установки)
+RUN npm ci
+
+# Копируем весь исходный код в контейнер
 COPY . .
 
-# Компилируем проект из TypeScript в JavaScript
+# Компилируем TypeScript в JavaScript
 RUN npm run build
+
+# Обновляем Prisma и генерируем клиента
+RUN npx prisma generate
 
 # Запускаем приложение
 CMD ["npm", "start"]
