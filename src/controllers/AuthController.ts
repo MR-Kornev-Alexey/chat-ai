@@ -14,6 +14,7 @@ class AuthController {
   static async login(req: Request, res: Response) {
     try {
       const body: LoginPayloadType = req.body;
+      console.log(body)
       let findUser = await prisma.user.findUnique({
         where: {
           email: body.email,

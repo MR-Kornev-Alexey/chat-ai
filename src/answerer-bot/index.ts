@@ -16,7 +16,16 @@ const stage = new Scenes.Stage([replyScene]);
 bot.use(session());
 bot.use(stage.middleware());
 
-const answererBot = new Telegraf(config.ANSWER_BOT_TOKEN);
+// const answererBot = new Telegraf(config.ANSWER_BOT_TOKEN);
+const token = process.env.NODE_ENV === 'production'
+    ? config.ANSWER_BOT_TOKEN
+    : config.DEV_ANSWER_BOT_TOKEN;
+
+if (!token) {
+    throw new Error('AnswererBot token is not defined!');
+}
+const answererBot = new Telegraf(token);
+
 answererBot.use(session());
 answererBot.use(stage.middleware());
 

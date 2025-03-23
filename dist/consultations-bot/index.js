@@ -1,8 +1,16 @@
 import { Telegraf } from "telegraf";
 import { config } from "../config/config.js";
 import consultationsService from "../services/common-db.js";
-import senderService from "../services/sender.js";
-const consultationBot = new Telegraf(config.CONS_BOT_TOKEN);
+import { handlePolicyAgreement } from "../component/handlePolicyAgreement.js";
+import { sendKeyboard } from "../component/sendKeyboard.js";
+import { handleMessage } from "../component/handleMessage.js";
+const token = process.env.NODE_ENV === 'production'
+    ? config.CONS_BOT_TOKEN
+    : config.DEV_CONS_BOT_TOKEN;
+if (!token) {
+    throw new Error('AnswererBot token is not defined!');
+}
+const consultationBot = new Telegraf(token);
 const webTerms = config.URL_TERMS;
 const webPrivacy = config.URL_PRIVACY;
 const start = "Если вы хотите понять, что происходит с вашим ребенком. Запутались в разрозненных диагнозах, рекомендациях и советах. Устали от бесконечных истерик, капризов и непонимания того, что происходит.\n" +
@@ -65,40 +73,8 @@ consultationBot.start(async (ctx) => {
         console.error("Error in /start command:", e);
     }
 });
-// Функция для отправки клавиатуры
-async function sendKeyboard(ctx, text) {
-    await ctx.reply(text, {
-        reply_markup: {
-            keyboard: [
-                [
-                    { text: "Пользовательское соглашение" },
-                    { text: "Политика конфиденциальности" }
-                ]
-            ],
-            resize_keyboard: true,
-            one_time_keyboard: false
-        }
-    });
-}
-async function handleMessage(data) {
-    await consultationsService.saveMessage({
-        chat_id: data.chat_id,
-        message: data.message || "empty message",
-        first_name: data.first_name || "не введено",
-        last_name: data.last_name || "не введено",
-        cause: data.cause || "empty_cause",
-    });
-    await senderService.sendMessage({
-        chat_id: data.chat_id,
-        message: data.message || "empty message",
-        first_name: data.first_name || "не введено",
-        last_name: data.last_name || "не введено",
-        cause: data.cause || "empty_cause",
-        username: data.username || "не введено",
-    });
-}
 consultationBot.command('request', async (ctx) => {
-    await sendKeyboard(ctx, "Вы подали заявку");
+    await sendKeyboard(ctx, "Вы подали заявку...");
     console.log(ctx.message.from);
     const data = {
         chat_id: ctx.message.from.id,
@@ -129,31 +105,15 @@ consultationBot.command('request', async (ctx) => {
             'Чтобы ускорить процесс, пожалуйста, напишите несколько вариантов дня и времени (по МСК), когда вам удобно.\n');
     }
 });
-consultationBot.hears('Политика конфиденциальности', async (ctx) => {
-    await ctx.reply("Вы будете переадресованы на сайт...", {
-        reply_markup: {
-            inline_keyboard: [
-                [
-                    { text: "Перейти на сайт", url: webPrivacy }
-                ]
-            ]
-        }
-    });
-});
 consultationBot.hears('Пользовательское соглашение', async (ctx) => {
-    await ctx.reply("Вы будете переадресованы на сайт...", {
-        reply_markup: {
-            inline_keyboard: [
-                [
-                    { text: "Перейти на сайт", url: webTerms }
-                ]
-            ]
-        }
-    });
+    await handlePolicyAgreement(ctx, "Вы будете переадресованы на сайт...", webTerms);
+});
+consultationBot.hears('Политика конфиденциальности', async (ctx) => {
+    await handlePolicyAgreement(ctx, "Вы будете переадресованы на сайт...", webPrivacy);
 });
 consultationBot.on('text', async (ctx) => {
     try {
-        console.log(ctx.message.from);
+        await sendKeyboard(ctx, "Ваше сообщение отправлено...");
         const data = {
             chat_id: ctx.message.from.id,
             first_name: ctx.message.from.first_name,
@@ -163,7 +123,6 @@ consultationBot.on('text', async (ctx) => {
             cause: 'consultation_request'
         };
         await handleMessage(data);
-        await sendKeyboard(ctx, "Ваше сообщение отправлено...");
     }
     catch (error) {
         console.error("Ошибка при сохранении сообщения:", error);

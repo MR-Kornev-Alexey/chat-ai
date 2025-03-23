@@ -12,6 +12,10 @@ class AnswererService {
                 const { conductionBot } = await import("../conduction-bot/index.js");
                 bot = conductionBot;
             }
+            else if (cause === "speak") {
+                const { speakBot } = await import("../speak-bot/index.js");
+                bot = speakBot;
+            }
             else {
                 throw new Error(`Unknown cause: ${cause}`);
             }
