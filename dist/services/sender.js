@@ -14,22 +14,28 @@ class SenderService {
             for (const user of listOfUser) {
                 try {
                     // Проверяем, если user.reply равен true, добавляем кнопку "Комментировать"
+                    console.log(data.cause);
                     if (user.answer === true) {
-                        await answererBot.telegram.sendMessage(Number(user.chat_id), createMessage(data), {
-                            reply_markup: {
-                                inline_keyboard: [
-                                    [
-                                        { text: 'Комментировать', callback_data: `reply_${data.chat_id}_${data.cause}` }
+                        if (data.cause === "privacy_request" || data.cause === "speak_tariff_press") {
+                            await answererBot.telegram.sendMessage(Number(user.chat_id), createMessage(data));
+                        }
+                        else {
+                            await answererBot.telegram.sendMessage(Number(user.chat_id), createMessage(data), {
+                                reply_markup: {
+                                    inline_keyboard: [
+                                        [
+                                            { text: 'Комментировать', callback_data: `reply_${data.chat_id}_${data.cause}` }
+                                        ]
                                     ]
-                                ]
-                            }
-                        });
-                        // console.log(`Сообщение с кнопкой "Комментировать" отправлено пользователю с telegram_id: ${user.telegram_id}`);
+                                }
+                            });
+                        }
+                        console.log(`Сообщение с кнопкой "Комментировать" отправлено пользователю с telegram_id: ${user.chat_id}`);
                     }
                     else {
                         // Если reply false или undefined, отправляем сообщение без кнопок
                         await answererBot.telegram.sendMessage(Number(user.chat_id), createMessage(data));
-                        // console.log(`Сообщение без кнопок отправлено пользователю с telegram_id: ${user.telegram_id}`);
+                        console.log(`Сообщение без кнопок отправлено пользователю с telegram_id: ${user.chat_id}`);
                     }
                     // console.log(`Сообщение отправлено пользователю с telegram_id: ${user.telegram_id}`);
                 }

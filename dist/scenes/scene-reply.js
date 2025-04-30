@@ -7,26 +7,28 @@ class SceneReply {
         let timeout;
         reply.enter(async (ctx) => {
             try {
-                // Проверяем, что state содержит chat_id и cause
                 // @ts-ignore
                 if (!ctx.scene.state.chat_id || !ctx.scene.state.cause) {
                     await ctx.reply("Ошибка: отсутствуют необходимые данные.");
                     // @ts-ignore
-                    return ctx.scene.leave();
+                    await ctx.scene.leave(); // Корректный выход
+                    return;
                 }
                 // @ts-ignore
-                const { chat_id, cause } = ctx.scene.state; // Получаем переданные данные
+                const { chat_id, cause } = ctx.scene.state;
                 await ctx.reply(`Прокомментировать обращение ${chat_id} | ${cause}.`);
-                // Устанавливаем таймер на 5 минут (300000 миллисекунд)
+                // Устанавливаем таймер на 3 минуты (180000 мс)
                 timeout = setTimeout(async () => {
-                    await ctx.reply('Время ожидания истекло. Сообщение не отправлено в течение 3 минут.');
+                    await ctx.reply('⏰ Время ожидания истекло. Сообщение не отправлено в течение 3 минут.');
                     // @ts-ignore
-                    await ctx.scene.leave(); // Выход из сцены
-                }, 180000); // 5 минут в миллисекундах
+                    await ctx.scene.leave();
+                }, 180000);
             }
             catch (error) {
-                console.error("Error in scene enter:", error);
+                console.error("❌ Ошибка при входе в сцену:", error);
                 await ctx.reply("Произошла ошибка при обработке вашего сообщения.");
+                // @ts-ignore
+                await ctx.scene.leave(); // Правильный выход из сцены
             }
         });
         reply.on('text', async (ctx) => {
