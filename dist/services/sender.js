@@ -13,7 +13,6 @@ class SenderService {
             const listOfUser = await prisma.tracking.findMany();
             for (const user of listOfUser) {
                 try {
-                    // Проверяем, если user.reply равен true, добавляем кнопку "Комментировать"
                     console.log(data.cause);
                     if (user.answer === true) {
                         if (data.cause === "privacy_request" || data.cause === "speak_tariff_press") {
