@@ -2,6 +2,7 @@
   "name": "express_ts",
   "version": "1.0.0",
   "main": "index.js",
+
   "type": "module",
   "scripts": {
     "start": "NODE_ENV=production node dist/index.js",
