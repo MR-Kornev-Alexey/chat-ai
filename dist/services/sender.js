@@ -4,7 +4,7 @@ function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 function createMessage(data) {
-    return `Этап ${data.cause}\nСообщение от ${data.chat_id}\n ${data.first_name} ${data.last_name}\nНикНейм: ${data.username}\n----------------------------------\n✍️${data.message}`;
+    return `Этап ${data.cause}\nСообщение от ${data.chat_id}\n ${data.first_name} ${data.last_name}\nНикНейм: @${data.username}\n----------------------------------\n✍️${data.message}`;
 }
 class SenderService {
     async sendMessage(data) {
